@@ -1,7 +1,16 @@
-const Container = () => {
-  return (
-    <div>Container</div>
-  )
+import { cn } from "@/lib/utils";
+
+interface Props {
+  children: React.ReactNode;
+  className?: string;
 }
 
-export default Container
+const Container = ({ children, className }: Props) => {
+  return (
+    <div className={cn("lg:max-w-7xl lg:mx-auto w-full px-8", className)}>
+      {children}
+    </div>
+  );
+};
+
+export default Container;
