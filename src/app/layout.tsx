@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import Header from "@/components/layout/header/Header";
 import Footer from "@/components/layout/footer/Footer";
+import { Providers } from "./providers";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -43,11 +44,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${bricolage.className} antialiased`}>
-        <div className="flex flex-col">
+        <Providers>
           <Header />
           {children}
           <Footer />
-        </div>
+        </Providers>
       </body>
     </html>
   );

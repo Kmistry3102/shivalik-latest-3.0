@@ -1,19 +1,19 @@
 "use client";
 
-import "swiper/css";
-import "swiper/css/pagination";
+import type { ReactNode } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 
 interface SwiperSliderProps {
   items: any[];
-  renderItem: (item: any, index: number) => React.ReactNode;
+  renderItem: (item: any, index: number) => ReactNode;
   autoplayDelay?: number;
   spaceBetween?: number;
   breakpoints?: any;
   slidesPerView?: number;
   loop?: boolean;
   className?: string;
+  pagination?: boolean; // <-- NEW
 }
 
 export default function SwiperSlider({
@@ -24,6 +24,7 @@ export default function SwiperSlider({
   slidesPerView = 1.3,
   loop = true,
   className = "",
+  pagination = true, // <-- NEW default
   breakpoints = {
     320: { slidesPerView: 1.3 },
     640: { slidesPerView: 1.3 },
@@ -38,13 +39,17 @@ export default function SwiperSlider({
       spaceBetween={spaceBetween}
       slidesPerView={slidesPerView}
       loop={loop}
-      modules={[Autoplay, Pagination]}
+      centeredSlides={true}
+      modules={pagination ? [Autoplay, Pagination] : [Autoplay]} // <-- CONDITIONAL
       autoplay={{
         delay: autoplayDelay,
         disableOnInteraction: false,
-        pauseOnMouseEnter: true,
       }}
-      pagination={{ clickable: true, dynamicBullets: true }}
+      pagination={
+        pagination
+          ? { clickable: true, dynamicBullets: true }
+          : false // <-- IMPORTANT
+      }
       breakpoints={breakpoints}
       className={className}
     >

@@ -7,7 +7,7 @@ import { LucideIcon } from "lucide-react";
 interface ButtonProps {
   label: string;
   href?: string;
-  variant?: "outline" | "filled";
+  variant?: "outline" | "filled" | "inverseFilled" | "inverseOutline";
   leftIcon?: LucideIcon;
   rightIcon?: LucideIcon;
   onClick?: () => void;
@@ -24,11 +24,14 @@ const Button = ({
   className,
 }: ButtonProps) => {
   const baseStyles =
-    "group inline-flex items-center gap-2 lg:px-6 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 justify-center";
+    "group inline-flex items-center gap-2 lg:px-6 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 justify-center w-fit";
 
   const variants = {
     outline: "border border-black text-black hover:bg-black hover:text-white",
     filled: "bg-black text-white hover:bg-black/90",
+    inverseOutline:
+      "border border-white text-white hover:bg-white hover:text-black",
+    inverseFilled: "bg-white text-black hover:bg-white/90",
   };
 
   return (

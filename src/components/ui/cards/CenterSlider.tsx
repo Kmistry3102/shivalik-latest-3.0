@@ -1,50 +1,67 @@
-"use client"; 
+"use client";
 import Image from "next/image";
-import SwiperSlider from "../Swiper";
-import { H3 } from "../Text";
 import Button from "../Button";
+import SwiperSlider from "../Swiper";
+import Container from "../Container";
+import { H2, H3, SubTitle } from "../Text";
 import { ChevronRight } from "lucide-react";
 
-const CenterSlider = ({ items }: { items: any }) => {
+const CenterSlider = ({
+  mainTitle,
+  mainsubTitle,
+  items,
+}: {
+  mainTitle: string;
+  mainsubTitle?: string;
+  items: any[];
+}) => {
+  if (!items?.length) return null;
+
   return (
-    <SwiperSlider
-      items={items}
-      className="center-slider overflow-hidden"
-      renderItem={(item) => (
-        <div className="relative">
-          <div className="relative w-full h-112.5 lg:h-100 overflow-hidden">
-            <Image
-              src={item.image}
-              alt={item.title}
-              fill
-              className="object-cover"
-            />
-            <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 pt-16 bg-linear-to-b from-transparent via-black/60 to-black/93 rounded-b-lg" />
-          </div>
+    <div className="py-10 lg:py-24">
+      <Container className="text-center mb-4 lg:mb-6">
+        <H2 className="mb-2 lg:mb-3">{mainTitle}</H2>
+        <SubTitle className="text-lg!">{mainsubTitle}</SubTitle>
+      </Container>
+      <SwiperSlider
+        items={items}
+        className="mySwiper center-slider-with-dots center-slider overflow-hidden mt-6"
+        renderItem={(item) => (
+          <div className="relative">
+            <div className="relative w-full h-112.5 lg:h-115 overflow-hidden">
+              <Image
+                src={item.bannerImage}
+                alt={item.projectName}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 pt-16 bg-linear-to-b from-transparent via-black/60 to-black/93 rounded-b-lg" />
+            </div>
 
-          {/* Title */}
-          <div className="absolute top-0 left-0 right-0 pt-6 lg:pt-16 px-6 lg:px-8 z-10">
-            <H3>{item.title}</H3>
-          </div>
+            {/* Title */}
+            <div className="absolute top-0 left-0 right-0 pt-6 lg:pt-10 px-6 lg:px-8 z-10">
+              <H3 className="text-center text-white font-bold!">{item.projectName}</H3>
+            </div>
 
-          {/* Buttons */}
-          <div className="absolute bottom-0 left-0 right-0 pb-6 flex justify-center gap-4">
-            <Button
-              label="Inquire"
-              href="/contact"
-              variant="outline"
-              rightIcon={ChevronRight}
-            />
-            <Button
-              label="Explore"
-              href="/projects/crown"
-              variant="filled"
-              rightIcon={ChevronRight}
-            />
+            {/* Buttons */}
+            <div className="absolute bottom-0 left-0 right-0 pb-6 flex justify-center gap-2">
+              <Button
+                label="Inquire"
+                href="/contact"
+                variant="inverseOutline"
+                rightIcon={ChevronRight}
+              />
+              <Button
+                label="Explore"
+                href="/projects/crown"
+                variant="inverseFilled"
+                rightIcon={ChevronRight}
+              />
+            </div>
           </div>
-        </div>
-      )}
-    />
+        )}
+      />
+    </div>
   );
 };
 

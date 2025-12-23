@@ -6,25 +6,50 @@ interface HeadingProps {
 }
 
 export const H1 = ({ className, children }: HeadingProps) => {
-  return <h1 className={cn("text-[32px] leading-tight lg:text-5xl font-medium text-black tracking-tight", className)}> {children} </h1>;
+  return (
+    <h1
+      className={cn(
+        "text-4xl lg:text-5xl font-medium text-[#121212]",
+        className
+      )}
+    >
+      {children}
+    </h1>
+  );
 };
 
 export const H2 = ({ className, children }: HeadingProps) => {
   return (
-    <h2 className={cn("text-xl font-semibold", className)}> {children} </h2>
+    <h2
+      className={cn(
+        "text-3xl lg:text-4xl font-medium text-[#121212]",
+        className
+      )}
+    >
+      {children}
+    </h2>
   );
 };
 
 export const H3 = ({ className, children }: HeadingProps) => {
-  return <h3 className={cn("text-lg font-medium", className)}> {children} </h3>;
+  return (
+    <h3 className={cn("text-2xl lg:text-3xl text-white ", className)}>
+      {children}
+    </h3>
+  );
 };
 
 export const H4 = ({ className, children }: HeadingProps) => {
-  return <h4 className={cn("text-base", className)}> {children} </h4>;
+  return <h4 className={cn("text-lg", className)}> {children} </h4>;
 };
 
 export const H5 = ({ className, children }: HeadingProps) => {
-  return <h5 className={cn("", className)}> {children} </h5>;
+  return (
+    <h5 className={cn("text-base font-normal text-gray-800", className)}>
+      {" "}
+      {children}{" "}
+    </h5>
+  );
 };
 
 export const H6 = ({ className, children }: HeadingProps) => {
@@ -32,5 +57,14 @@ export const H6 = ({ className, children }: HeadingProps) => {
 };
 
 export const SubTitle = ({ className, children }: HeadingProps) => {
-  return <p className={cn("text-[16px] leading-tight lg:text-xl text-black/70 font-medium", className)}> {children} </p>;
+  return (
+    <p
+      className={cn(
+        "text-xl leading-tight lg:text-2xl text-[#575757] font-medium",
+        className
+      )}
+    >
+      {children}
+    </p>
+  );
 };
